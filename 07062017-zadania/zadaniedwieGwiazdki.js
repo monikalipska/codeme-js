@@ -2,7 +2,7 @@
     napisz jedna funkcje ktora moze przyjac
     1. jako parametr liste z liczbami
     2. dwa parametry okreslajace przedzial liczb calkowitych
-    Funkcja powinna zwrocic wszystkie liczby pierwsze znajduj¹ce 
+    Funkcja powinna zwrocic wszystkie liczby pierwsze znajdujÂ¹ce 
     sie w liscie Array lub z przedzialu okreslonego przez dwa parametry 
 */
 
@@ -21,7 +21,6 @@ function liczbyPierwsze () {
   }
   
   if (lnArgs == 1) {
-    let outback = [];
     args[0].forEach(function (element, index) {
      if (pomocnicza(element)) {
         outback.push(element);
