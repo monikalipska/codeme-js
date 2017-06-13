@@ -12,7 +12,7 @@
 function liczbyPierwsze () {
   const args = arguments;
   // mozna uzyc juz args
-  const lnArgs = arguments.length;
+  const lnArgs = args.length;
   let outback = [];
 
   function pomocnicza(i) {
@@ -29,28 +29,29 @@ function liczbyPierwsze () {
   // jak podam przy wywolaniu np (3)
   // to walnie bledem
   // porownanie scisle ===
-  if (lnArgs == 1) {
+  if (Array.isArray(args[0])) {
       // czy mozna uzyc innej metody ? Jezeli tak - jakiej?
-    args[0].forEach(function (element, index) {
+    args[0].forEach(function (element) {
      if (pomocnicza(element)) {
         outback.push(element);
       }
-    }) // brak srednika moze prowadzic do powaznych bledow ;)
+    }); // brak srednika moze prowadzic do powaznych bledow ;)
     return outback.join(",");
   }
   
-  else if (lnArgs == 2) { // bardzo nieczytelne wyglada jak by else if bylo samodzielna instrukcja, brak scislego porownania
-      // czy ta konstrukcja else if jest potrzeban ?
+// bardzo nieczytelne wyglada jak by else if bylo samodzielna instrukcja, brak scislego porownania
+      // czy ta konstrukcja else if jest potrzeban ? ML: na koniec dałam opcję na else 
+    // ML: można na początku zrobić sprawdzenie czy argumenty to array lub number, a potem po ilości argumentów np. ale nie wiem czy to dobry pomysł...
+  else if (typeof args[0] === 'number' && typeof args[1] === 'number') {
     const minInt = args[0];
     const maxInt = args[1];
-
     for (let i = minInt; i <= maxInt; i += 1) {
       if (pomocnicza(i)) {
         outback.push(i);
       }
     }
-
     // dwa razy zwracasz to samo - celowo?
     return outback.join(",");
   }
+  return "Podaj array lub przedział liczb"; // i na koniec opcja na else
 }
